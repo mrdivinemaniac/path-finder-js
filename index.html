@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Pathfinding </title>
+
+    <script src="src/Cell.js"></script>
+    <script src="src/Grid.js"></script>
+
+    <script src="src/BFS.js"></script>
+    <script src="src/DFS.js"></script>
+
+    <script src="src/App.js"></script>
+
+    <script src="src/Interface.js"></script>
+
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+    <link href="src/style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+    <!-- Grid Creation Dialog Box -->
+    <div id="create-new-dialog">
+        <div class="title">
+            <div class="fa fa-close" onclick="Interface.toggleNewDialog()"></div>
+            Please enter the dimensions for the grid to be created.
+        </div>
+        <div class="inputs">
+            Rows: <input type="text" id="input-rows" value="30"/>
+            Columns: <input type="text" id="input-columns" value="40"/>
+            <button onclick="App.drawGrid();Interface.toggleNewDialog()">Create</button>
+        </div>
+    </div>
+
+    <!-- Message Display Dialog Box -->
+    <div id="message-dialog" class="invisible">
+        <span class="fa fa-close" onclick="Interface.hideMessage();"></span>
+        <span class="fa fa-warning"></span>
+        <div id="message-dialog-text"></div>
+    </div>
+
+    <!-- Settings Dialog Box -->
+    <div id="settings-dialog" class="invisible">
+        <span class="fa fa-close" onclick="Interface.toggleSettingsDialog();"></span>
+        <div>
+            <div>
+                <label> <input type="checkbox" checked onchange="App.disableAnimation(this.checked)"/>Enable Animation</label>
+            </div>
+            <div>
+                <label>Animation Speed: <input type="number" id="animation-speed-input" value="60" onchange="App.setAnimationFPS(this.value);"/> FPS</label>
+            </div>
+            <div><b>Algorithm:</b></div>
+            <div>
+                <label><input type="radio" name="algorithm_radio" checked value="DFS" onclick="App.changeAlgorithm(DFS)"/> DFS </label>
+                <label><input type="radio" name="algorithm_radio" value="BFS" onclick="App.changeAlgorithm(BFS)"/> BFS </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Sidebar -->
+    <div id="sidebar">
+        <div onclick="Interface.toggleExtended()" class="special">
+            <span class="fa fa-navicon"> </span>
+        </div>
+
+        <div onclick="Interface.toggleSettingsDialog()">
+            <span class="fa fa-gear"> </span>
+            <label> Settings </label>
+        </div>
+
+        <div onclick="Interface.toggleNewDialog()">
+            <span class="fa fa-file"> </span>
+            <label> New </label>
+        </div>
+
+        <div onclick="Grid.toggleGridLines();this.classList.toggle('active')">
+            <span class="fa fa-hashtag"> </span>
+            <label> Toggle Grid </label>
+        </div>
+        <div class="separator"></div>
+        <div onclick="App.setCursorType(TYPE_START)" class="drawButton invisible">
+            <span class="fa fa-child"></span>
+            <label> Set Start Point </label>
+        </div>
+        <div onclick="App.setCursorType(TYPE_GOAL)" class="drawButton invisible">
+            <span  class="fa fa-trophy"></span>
+            <label> Set Goal Point </label>
+        </div>
+
+        <div onclick="App.setCursorType(TYPE_OBSTACLE)" class="drawButton invisible">
+            <span class="fa fa-cubes"></span>
+            <label> Place Obstacles </label>
+        </div>
+
+        <div onclick="App.setCursorType(TYPE_FREE)" class="drawButton invisible">
+            <span class="fa fa-eraser"></span>
+            <label> Eraser </label>
+        </div>
+
+        <div class="separator"></div>
+
+        <div onclick="Grid.randomizeObstacles()" class="drawButton invisible">
+            <span class="fa fa-random"></span>
+            <label> Randomize Grid </label>
+        </div>
+
+        <div class="separator"></div>
+
+        <div id="run-button" onclick="App.run()" class="invisible">
+            <span class="fa fa-play-circle"></span>
+            <label> Start/Resume </label>
+        </div>
+
+        <div id="pause-button" onclick="App.pause()" class="invisible">
+            <span class="fa fa-pause-circle"></span>
+            <label> Pause </label>
+        </div>
+
+        <div id="stop-button" onclick="App.stop()" class="invisible">
+            <span class="fa fa-stop-circle"></span>
+            <label> Stop </label>
+        </div>
+    </div>
+
+    <!-- The Grid Area -->
+    <div style="overflow: visible; margin-left:70px">
+        <div id="grid-container">
+        </div>
+    </div>
+</body>
+</html>

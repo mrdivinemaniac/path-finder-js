@@ -1,0 +1,250 @@
+body {
+    margin:0px;
+    font-family: sans-serif;
+}
+
+#sidebar {
+    float:left;
+    height:100vh;
+    background: #DDDDDD;
+    padding: 10px;
+    position: fixed;
+    margin-top: -10px;
+}
+
+#sidebar div {
+    border-bottom: #CCCCCC solid 1px;
+    padding: 10px;
+    cursor: pointer;
+    clear: both;
+    text-align: center;
+}
+
+#sidebar.extended div {
+    text-align: left;
+}
+
+#sidebar div.separator {
+    padding-top:0px;
+    padding-bottom:5px;
+}
+
+#sidebar div.active {
+    color: #FFFFFF;
+    background: #000000;
+    border: 1px solid #CCCCCC;
+}
+
+#sidebar div.active:hover {
+    color:#FFFFFF;
+    background: #222222;
+}
+
+#sidebar div.special:hover {
+    border: none;
+    border-bottom: #CCCCCC solid 1px;
+}
+
+#sidebar div:hover {
+    color: darkgreen;
+    border: 1px solid #CCCCCC;
+}
+
+#sidebar div label {
+    display: none;
+}
+
+#sidebar.extended div label {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 5px;
+}
+
+#grid-container {
+    margin: 10px;
+    background: #33CCFF;
+    float:left;
+}
+
+.grid-row {
+    clear: both;
+    height: 20px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.cell {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    background: #33CCFF;
+    cursor: pointer;
+    text-align: center;
+    font-size: 20px;
+}
+
+.grid-lines .cell {
+    border-left: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    width: 19px;
+    height: 19px;
+}
+
+.cell.path {
+    width:18px;
+    height:18px;
+    border:1px solid #33CCFF;
+    background: #99FF66;
+}
+
+.cell.path.traced {
+    background: indianred;
+}
+
+.cell.path.left {
+    width:19px;
+    border-left:none;
+}
+.cell.path.right {
+    width:19px;
+    border-right:none;
+}
+.cell.path.up {
+    height:19px;
+    border-top:none;
+}
+.cell.path.down {
+    height:19px;
+    border-bottom:none;
+}
+
+.cell.path.right.down {
+    border-top-left-radius: 5px;
+}
+
+.cell.path.left.down {
+    border-top-right-radius: 5px;
+}
+
+.cell.path.up.right {
+    border-bottom-left-radius: 5px;
+}
+
+.cell.path.up.left {
+    border-bottom-right-radius: 5px;
+}
+
+.cell.path.left.right {
+    width:20px;
+}
+
+.cell.path.up.down {
+    height:20px;
+}
+
+.cell.start {
+    color:darkred;
+}
+
+.cell.obstacle {
+    background: #666666;
+}
+
+.cell.goal {
+    color: darkred;
+}
+
+.cell.free:hover {
+    background: #CCCCCC;
+}
+
+.clear {
+    clear:both;
+}
+
+#settings-dialog {
+    height:40%;
+    background:#EEEEEE;
+    border-radius: 5px;
+    position: fixed;
+    right:10px;
+    top: 30%;
+    padding: 10px 20px 10px 20px;
+}
+
+#settings-dialog .fa-close {
+    width: 100%;
+    text-align: right;
+    clear: both;
+    cursor: pointer;
+}
+
+#settings-dialog div {
+    margin-top: 10px;
+}
+
+#settings-dialog div div{
+    text-align: left;
+}
+
+#settings-dialog input[type='number'] {
+    width: 40px;
+    text-align: center;
+}
+
+#create-new-dialog {
+    width:40%;
+    background:#EEEEEE;
+    border-radius: 5px;
+    position: fixed;
+    left:30%;
+    bottom: 30px;
+}
+
+#create-new-dialog div.title {
+    padding: 10px;
+    background: #DDDDDD;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#create-new-dialog div.title .fa-close {
+    float:right;
+    cursor: pointer;
+}
+
+#create-new-dialog div.inputs {
+    padding: 10px;
+    text-align: center;
+}
+
+#create-new-dialog input{
+    width:32px;
+    margin-right: 20px;
+    text-align: center;
+}
+
+.invisible {
+    display: none;
+}
+
+#message-dialog {
+    width:40%;
+    background:#EEEEEE;
+    border-radius: 5px;
+    position: fixed;
+    left:30%;
+    top: 30px;
+    padding: 10px;
+}
+
+#message-dialog span {
+    float:left;
+    margin-right: 10px;
+}
+
+#message-dialog .fa-close {
+    float:right;
+    margin-left: 10px;
+    cursor: pointer;
+}
